@@ -9,30 +9,61 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+    // this.onSelect = this.onSelect.bind(this);
     this.state = {
       defaultActive: '/'
     }
   }
 
   componentDidMount() {
-    this.setState({
-      defaultActive: window.location.pathname
-    })
+    console.log("componentDidMount")
+
+    if (this.state.defaultActive !== window.location.pathname) {
+      this.setState({
+        defaultActive: window.location.pathname
+      })
+    }
+
+  }
+
+  onSelect() {
+    console.log("onSelect")
+    if (this.state.defaultActive !== window.location.pathname) {
+      this.setState({
+        defaultActive: window.location.pathname
+      })
+    }
   }
 
   render() {
     return (
       <div className="app-container">
         <div>
-          <Menu defaultActive={this.state.defaultActive} className="el-menu-vertical-demo app-slide-bar">
+          <Menu defaultActive={this.state.defaultActive} className="el-menu-vertical-demo app-slide-bar" onSelect={this.onSelect.bind(this)}>
             {routerList.map(item => {
-              return (
-                <Link className="app-link" to={item.path} key={item.path}>
-                  <Menu.Item index={item.path}>
-                    <i className={item.icon}></i>{item.name}
-                  </Menu.Item>
-                </Link>
-              )
+              if (item.children) {
+                return (
+                  <Menu.SubMenu key={item.path} index={item.path} title={<span><i className={item.icon}></i>{item.name}</span>}>
+                    {item.children.map(childrenItem => {
+                      return (<Link className="app-link" to={childrenItem.path} key={childrenItem.path}>
+                        <Menu.Item index={childrenItem.path}>
+                          <i className={childrenItem.icon}></i>{childrenItem.name}
+                        </Menu.Item>
+                      </Link>
+                      )
+                    })}
+                  </Menu.SubMenu>
+                )
+              } else {
+                return (
+                  <Link className="app-link" to={item.path} key={item.path}>
+                    <Menu.Item index={item.path}>
+                      <i className={item.icon}></i>{item.name}
+                    </Menu.Item>
+                  </Link>
+                )
+              }
+
             })}
           </Menu>
         </div>

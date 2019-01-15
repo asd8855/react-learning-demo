@@ -1,7 +1,6 @@
 import asyncComponent from './asyncComponent';
 const _import_views = filePath => asyncComponent(() => {
-    console.log(`../pages/${filePath}`);
-  return import(`../pages/${filePath}`)
+    return import(`../pages/${filePath}`)
 });
 
 export const routerList = [
@@ -21,6 +20,18 @@ export const routerList = [
         exact: false,
         component: _import_views('About')
     },
+    {
+        path: '/charts',
+        name: '图表',
+        icon: 'el-icon-setting',
+        layout: true,
+        exact: false,
+        // redirect: '/charts/lineChart',
+        children: [
+            { path: '/charts/lineChart', component: _import_views('Rechart/Line'), name: 'LineChart' },
+            { path: '/charts/barChart', component: _import_views('Rechart/Bar'), name: 'BarChart' },
+        ]
+    }
 ]
 
 
