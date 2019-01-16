@@ -43,16 +43,16 @@ export default class App extends Component {
             {routerList.map(item => {
               if (item.children) {
                 return (
-                  <Menu.SubMenu key={item.path} index={item.path} title={<span><i className={item.icon}></i>{item.name}</span>}>
-                    {item.children.map(childrenItem => {
-                      return (<Link className="app-link" to={childrenItem.path} key={childrenItem.path}>
-                        <Menu.Item index={childrenItem.path}>
-                          <i className={childrenItem.icon}></i>{childrenItem.name}
-                        </Menu.Item>
-                      </Link>
-                      )
-                    })}
-                  </Menu.SubMenu>
+                    <Menu.SubMenu key={item.path} index={item.path} title={<span><i className={item.icon}></i>{item.name}</span>}>
+                      {item.children.map(childrenItem => {
+                        return (<Link className="app-link" to={childrenItem.path} key={childrenItem.path}>
+                          <Menu.Item index={childrenItem.path}>
+                            <i className={childrenItem.icon}></i>{childrenItem.name}
+                          </Menu.Item>
+                        </Link>
+                        )
+                      })}
+                    </Menu.SubMenu>
                 )
               } else {
                 return (

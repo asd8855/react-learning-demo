@@ -5,7 +5,7 @@ const _import_views = filePath => asyncComponent(() => {
 
 export const routerList = [
     {
-        path: '/',
+        path: '/home',
         name: '首页',
         icon: 'el-icon-menu',
         layout: true,
@@ -26,7 +26,7 @@ export const routerList = [
         icon: 'el-icon-setting',
         layout: true,
         exact: false,
-        // redirect: '/charts/lineChart',
+        redirect: '/charts/lineChart',
         children: [
             { path: '/charts/lineChart', component: _import_views('Rechart/Line'), name: 'LineChart' },
             { path: '/charts/barChart', component: _import_views('Rechart/Bar'), name: 'BarChart' },
