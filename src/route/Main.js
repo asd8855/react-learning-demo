@@ -8,12 +8,10 @@ const renderRouteComponent = routes => routes.map(route => {
 
 const Main = () => {
     return (
-        <main>
             <Switch>
                 {renderRouteComponent(routerList)}
                 <Redirect from='/' to='/home' />
             </Switch>
-        </main>
     )
 };
 

@@ -2,6 +2,7 @@
   "name": "react-admin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://asd8855.github.io/react-admin-web/",
   "dependencies": {
     "element-react": "^1.4.26",
     "element-theme-default": "^1.4.13",
@@ -17,7 +18,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "build2": "cp -r build/ /Users/libo/Desktop/Vue/WebPage/react-admin-web/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +31,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
